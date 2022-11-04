@@ -12,7 +12,7 @@ namespace MyShoppingList
         {
         }
 
-        public Dictionary<string, string> newList = new Dictionary<string, string>();
+        public Dictionary<string, int> newList = new Dictionary<string, int>();
         public char repeat = 'Y';
 
         public void AnotherItemCheck()
@@ -39,12 +39,21 @@ namespace MyShoppingList
 
         public void AddingItems()
         {
-            string item, qnty;
+            string item, sQnty;
+            int iQnty = 0;
             Console.WriteLine("Please enter the name of the item for your shopping list:");
             item = Console.ReadLine();
             Console.WriteLine("Please enter the quanity:");
-            qnty = Console.ReadLine();
-            newList.Add(item, qnty);
+            sQnty = Console.ReadLine();
+            if (int.TryParse(sQnty, out iQnty))
+            {
+            }
+            else
+            {
+                Console.WriteLine("You have not entered a valid quanity, please enter a number only");
+                AddingItems();
+            }
+            newList.Add(item, iQnty);
             Console.WriteLine("Would you like to add another item (Y/N):");
             string repeat1 = Console.ReadLine();
             switch (repeat1.Length)
